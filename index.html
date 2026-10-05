@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Huzaifa Dal — Offensive Security | Red Team</title>
+<meta name="description" content="Huzaifa Dal: cybersecurity practitioner in offensive security, red teaming and vulnerability research. Core Team Member at Cyberster. C|PENT, Fortinet and APIsec certified.">
+<meta name="theme-color" content="#04060a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%A6%87%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Huzaifa Dal — Offensive Security | Red Team">
+<meta property="og:description" content="Offensive security, red teaming and vulnerability research. Core Team Member at Cyberster.">
+<meta name="twitter:card" content="summary">
+<meta name="color-scheme" content="dark">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Barlow:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--a:#ffc83a;--a2:#ffe08a;--c:#8fb7d6;--bg:#04060a;--p:rgba(9,13,21,.86);--line:rgba(255,200,58,.2);--t:#d5dde8;--dim:#8d9bad;--w:#fff;--d:'Oswald',sans-serif;--b:'Barlow',sans-serif;--m:'IBM Plex Mono',monospace;--mx:50vw;--my:40vh;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--t);font:18px/1.6 var(--b);overflow-x:hidden}
+html.cc,html.cc *{cursor:none!important}
+#g{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+#fl{position:fixed;inset:0;z-index:40;pointer-events:none;background:#cfe0ff;opacity:0}
+#lt{position:fixed;inset:0;z-index:30;pointer-events:none;background:radial-gradient(260px circle at var(--mx) var(--my),rgba(255,214,130,.14),transparent 70%);mix-blend-mode:screen}
+#cur{position:fixed;left:0;top:0;width:40px;height:40px;z-index:60;pointer-events:none;opacity:0;transition:opacity .2s}
+html.cc #cur{opacity:1}
+#cur svg{width:100%;height:100%;transition:transform .2s;display:block}
+#cur.big svg{transform:scale(1.35)}
+.w{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+section{padding:90px 0;position:relative;z-index:2}
+a{color:var(--a);text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--a);outline-offset:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(12px + env(safe-area-inset-top,0px)) 0 12px;background:rgba(4,6,10,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;justify-content:space-between;align-items:center;gap:14px}
+.lg{font:700 1.05rem var(--d);letter-spacing:3px;color:var(--w)}.lg b{color:var(--a)}
+.ln{display:flex;gap:20px;font:.78rem var(--m);overflow-x:auto;white-space:nowrap}
+.ln a{color:var(--dim)}.ln a:hover,.ln a.on{color:var(--a)}
+.snd{font:.74rem var(--m);background:transparent;color:var(--dim);border:1px solid var(--line);padding:5px 10px;cursor:pointer;white-space:nowrap}
+.snd[aria-pressed=true]{color:var(--a);border-color:var(--a);background:rgba(255,200,58,.08)}
+h2{font:700 clamp(1.8rem,4vw,2.6rem)/1.1 var(--d);text-transform:uppercase;letter-spacing:2px;color:var(--w);margin-bottom:6px}
+h2 em{font-style:normal;color:var(--a)}
+.sub{font:.82rem var(--m);color:var(--dim);margin-bottom:32px}.sub::before{content:"// ";color:var(--a)}
+#hero{min-height:100vh;display:flex;align-items:center;padding:110px 0 120px}
+.hg{display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:center}
+.tag{display:inline-block;font:.76rem var(--m);color:var(--a);border:1px solid var(--line);padding:5px 12px;margin-bottom:20px;background:rgba(255,200,58,.06)}
+h1{font:700 clamp(2.6rem,7vw,5rem)/.98 var(--d);text-transform:uppercase;letter-spacing:2px;color:var(--w);margin-bottom:16px;text-shadow:0 0 30px rgba(255,200,58,.2)}
+h1 span{display:block;color:var(--a)}
+.role{font:1rem var(--m);color:var(--c);min-height:1.7em;margin-bottom:16px}
+.role::after{content:"█";color:var(--a);animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.lead{max-width:50ch;margin-bottom:28px}
+.bt{display:flex;flex-wrap:wrap;gap:12px}
+.bn{font:500 .85rem var(--m);padding:12px 22px;border:1px solid var(--a);color:#05070b;background:var(--a);cursor:pointer;transition:.2s;display:inline-block}
+.bn:hover{background:transparent;color:var(--a)}.bn.g{background:transparent;color:var(--a)}.bn.g:hover{background:var(--a);color:#05070b}
+.cd{background:var(--p);border:1px solid var(--line);backdrop-filter:blur(6px)}
+.file{padding:22px;position:relative}
+.file h3{font:.76rem var(--m);color:var(--a);margin-bottom:12px;display:flex;justify-content:space-between}
+.row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,.1);font:.82rem var(--m)}
+.row span{color:var(--dim)}.row b{font-weight:400;color:var(--w);text-align:right}
+.cr{position:relative;z-index:2;border-block:1px solid var(--line);background:rgba(4,6,10,.8);backdrop-filter:blur(8px);padding:12px 0;font:.8rem var(--m);color:var(--a)}
+.cr .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 24px}
+.ag{display:grid;grid-template-columns:1.4fr 1fr;gap:34px}
+.ag p{margin-bottom:14px}
+.sts{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
+.st{padding:18px 14px}.st b{display:block;font:700 2.1rem/1 var(--d);color:var(--a)}.st small{font:.74rem var(--m);color:var(--dim)}
+.kc{display:grid;grid-template-columns:repeat(5,1fr);margin-bottom:14px}
+.kc button{font:500 .8rem var(--m);color:var(--dim);background:var(--p);border:1px solid var(--line);padding:16px 6px;cursor:pointer}
+.kc button+button{border-left:0}.kc button:hover{color:var(--w)}
+.kc button[aria-selected=true]{background:var(--a);color:#05070b;border-color:var(--a)}
+.kd{padding:24px 26px;min-height:130px}.kd h3{font:700 1.4rem var(--d);text-transform:uppercase;letter-spacing:1px;color:var(--w);margin-bottom:6px}
+.kd small{display:block;margin-top:10px;font:.78rem var(--m);color:var(--c)}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.sk{padding:22px;transition:.25s}.sk:hover{border-color:var(--a);transform:translateY(-4px)}
+.sk h3{font:700 1.15rem var(--d);text-transform:uppercase;letter-spacing:1px;color:var(--w);margin-bottom:10px}
+.pl{display:flex;flex-wrap:wrap;gap:6px}.pl span{font:.74rem var(--m);color:var(--a2);border:1px solid var(--line);padding:3px 9px;background:rgba(255,200,58,.06)}
+.tlv{border-left:2px solid var(--line);padding-left:28px;display:grid;gap:20px}
+.ev{position:relative;padding:20px 22px}
+.ev::before{content:"";position:absolute;left:-37px;top:24px;width:14px;height:14px;background:var(--a);transform:rotate(45deg);box-shadow:0 0 14px var(--a)}
+.ev.e::before{background:var(--bg);border:2px solid var(--c);box-shadow:none}
+.ev .dt{font:.76rem var(--m);color:var(--a)}.ev h3{font:700 1.3rem var(--d);text-transform:uppercase;letter-spacing:1px;color:var(--w)}
+.ev .or{font:.84rem var(--m);color:var(--c);margin:2px 0 6px}.ev p{color:var(--t);font-size:.97rem}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.ce{padding:18px;border-left:3px solid var(--a)}.ce s{text-decoration:none;font:.72rem var(--m);color:var(--a)}.ce h3{font:700 1.05rem var(--b);color:var(--w);margin-top:6px}
+.cn{padding:44px 28px;text-align:center}.cn p{max-width:54ch;margin:0 auto 20px}
+.ml{font:1.05rem var(--m);color:var(--w);word-break:break-all;border-bottom:1px solid var(--a)}
+.cn .bt{justify-content:center;margin-top:26px}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);background:rgba(4,6,10,.85);padding:22px 0;font:.78rem var(--m);color:var(--dim)}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.rv{opacity:0;transform:translateY(18px);transition:.6s}.rv.in{opacity:1;transform:none}
+@media(max-width:820px){.hg,.ag{grid-template-columns:1fr}.kc{grid-template-columns:repeat(3,1fr)}.kc button:nth-child(4){border-left:1px solid var(--line)}.lg{display:none}}
+#red{position:fixed;right:2vw;bottom:0;width:clamp(180px,24vw,360px);z-index:1;pointer-events:none;opacity:.88}
+#red .cape{transform-origin:184px 150px;animation:cape 5.5s ease-in-out infinite}
+#red .scr{animation:scr 3.4s ease-in-out infinite}
+#red .hand{animation:typ .42s steps(1) infinite}
+@keyframes cape{50%{transform:rotate(2.4deg) skewX(-3deg)}}
+@keyframes scr{0%,100%{opacity:.9}30%{opacity:.65}34%{opacity:1}62%{opacity:.75}}
+@keyframes typ{50%{transform:translateY(1.2px)}}
+@media(max-width:820px){#red{width:150px;right:0;opacity:.55}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+.skip{position:absolute;left:-999px;top:8px;z-index:80;background:var(--a);color:#05070b;padding:8px 14px;font:.8rem var(--m)}.skip:focus{left:8px}
+#pg{position:fixed;top:0;left:0;height:3px;width:0;background:var(--a);z-index:70;box-shadow:0 0 10px var(--a)}
+.hb{margin-bottom:22px}
+.w3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:30px}.w3 .cd{padding:20px}.w3 h3{font:700 1.05rem var(--d);text-transform:uppercase;letter-spacing:1px;color:var(--w);margin-bottom:6px}.w3 p{font-size:.95rem}
+.cf{display:grid;grid-template-columns:360px 1fr;gap:20px}.bd{display:flex;align-items:center;justify-content:center;padding:24px}.bd svg{width:100%;max-width:190px}
+.ci{padding:28px}.ci h3{font:700 1.5rem var(--d);text-transform:uppercase;letter-spacing:1px;color:var(--w);margin-bottom:8px}
+.cap{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-top:16px}.cap li{font-size:.95rem;padding-left:18px;position:relative}.cap li::before{content:"▸";position:absolute;left:0;color:var(--a)}
+.ce small{display:block;font:.76rem var(--m);color:var(--dim);margin-top:4px}.ce.f{background:linear-gradient(135deg,rgba(255,200,58,.2),var(--p));border-color:var(--a)}
+@media(max-width:820px){.cf,.cap{grid-template-columns:1fr}.bd svg{max-width:150px}}
+.zoom{background:none;border:0;cursor:zoom-in;color:var(--dim);font:.74rem var(--m);text-align:center;width:100%}.zoom img{width:100%;height:auto;display:block;border:1px solid var(--line);margin-bottom:8px}
+#lb{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}#lb[hidden]{display:none}#lb img{max-width:min(96vw,900px);width:100%;height:auto;border:1px solid var(--a)}
+.pjg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.pj{padding:24px;display:flex;flex-direction:column}.pj .mt{font:.74rem var(--m);color:var(--a)}.pj h3{font:700 1.4rem var(--d);text-transform:uppercase;letter-spacing:1px;color:var(--w);margin:4px 0 8px}.pj p{font-size:.97rem}
+.pj ul{list-style:none;margin:14px 0;display:grid;gap:7px}.pj li{font-size:.93rem;padding-left:16px;position:relative}.pj li::before{content:"▸";position:absolute;left:0;color:var(--a)}
+.pj .pl{margin-top:auto;padding-top:6px}.pj .lk{display:inline-block;margin-top:14px;font:.8rem var(--m)}
+.flt{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}.flt button{font:.76rem var(--m);background:var(--p);color:var(--dim);border:1px solid var(--line);padding:6px 14px;cursor:pointer}.flt button:hover{color:var(--w)}.flt button[aria-pressed=true]{background:var(--a);color:#05070b;border-color:var(--a)}
+.ce.hd{display:none}.ce .id{font-size:.68rem;opacity:.75;word-break:break-all}
+.sg{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+#bf{position:fixed;inset:0;width:100%;height:100%;z-index:35;pointer-events:none}#fog{position:fixed;left:0;right:0;bottom:0;height:45vh;z-index:1;pointer-events:none;background:linear-gradient(transparent,rgba(120,150,190,.07) 60%,rgba(4,6,10,.5))}.hint{font:.74rem var(--m);color:var(--dim);margin-top:18px}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a><div id="pg"></div>
+<canvas id="g" aria-hidden="true"></canvas><canvas id="bf" aria-hidden="true"></canvas><div id="fog" aria-hidden="true"></div>
+<svg id="red" aria-hidden="true" viewBox="0 0 320 270" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffc83a" stop-opacity=".5"/><stop offset=".55" stop-color="#ffc83a" stop-opacity=".12"/><stop offset="1" stop-color="#ffc83a" stop-opacity="0"/></radialGradient>
+</defs>
+<rect x="96" y="214" width="224" height="60" fill="#05070c"/>
+<rect x="96" y="214" width="224" height="2" fill="rgba(255,200,58,.28)"/>
+<ellipse class="scr" cx="124" cy="176" rx="70" ry="52" fill="url(#rg)"/>
+<path class="cape" d="M184 150C232 140 276 172 292 214L302 270L262 262L250 244L234 262L214 242L196 216Z" fill="#04060a" stroke="rgba(255,200,58,.2)" stroke-width="1"/>
+<polyline points="200,208 124,204 128,252" fill="none" stroke="#070a10" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M118 250c-2 5 0 9 6 9h20c4 0 5-4 2-6l-10-3z" fill="#05070c" stroke="rgba(255,200,58,.2)"/>
+<line x1="200" y1="206" x2="178" y2="152" stroke="#070a10" stroke-width="28" stroke-linecap="round"/>
+<path d="M156 124 L154 98 L166 118 L176 117 L182 96 L184 124 Q184 146 168 148 Q154 146 156 124Z" fill="#070a10" stroke="rgba(255,200,58,.3)" stroke-width="1"/>
+<polygon points="156,128 164,130 163,132 155,131" fill="#eef3fb"/>
+<polygon points="168,129 176,128 175,131 167,132" fill="#eef3fb" opacity=".0"/>
+<path d="M156 138q6 6 14 4" stroke="rgba(255,200,58,.25)" fill="none"/>
+<polyline class="hand" points="176,158 160,186 130,196" fill="none" stroke="#0a0e15" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="104,196 154,196 154,202 104,202" fill="#0c1018" stroke="rgba(255,200,58,.35)" stroke-width=".8"/>
+<polygon points="104,196 109,196 100,156 95,157" fill="#0c1018"/>
+<line class="scr" x1="109" y1="196" x2="100" y2="156" stroke="#ffc83a" stroke-width="2.2"/>
+</svg><div id="fl" aria-hidden="true"></div><div id="lt" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 22C16 24 8 30 2 44c8-4 14-5 22-3 8-2 14-1 22 3-6-14-14-20-22-22z" fill="#11151d" stroke="#ffc83a" stroke-width="1.5"/><path d="M17 3l4 8h6l4-8 1 14c0 4-3 7-8 7s-8-3-8-7z" fill="#0b0e14" stroke="#ffc83a" stroke-width="1.5"/><path d="M19 15l4 1.5v-3zM29 15l-4 1.5v-3z" fill="#fff"/></svg></div>
+
+<div id="lb" hidden><img alt="Certificate, enlarged"></div>
+<nav><div class="w"><a class="lg" href="#hero">HUZAIFA<b>//</b>SEC</a>
+<div class="ln"><a href="#hero">home</a><a href="#about">about</a><a href="#exp">experience</a><a href="#certs">certs</a><a href="#skills">skills</a><a href="#contact">contact</a></div>
+<button type="button" class="snd" id="snd" aria-pressed="false" title="Rain, thunder, bat colony and Gotham score">♪ Sound off</button></div></nav>
+
+<section id="hero"><div class="w hg">
+<div>
+<span class="tag">Core Team Member · Cyberster</span>
+<h1>Huzaifa<span>Dal</span></h1>
+<div class="role" id="role" aria-label="Active Directory, Web Pentesting, Red Teaming, Vulnerability Research"></div>
+<p class="lead">Cybersecurity practitioner focused on offensive security, red teaming and vulnerability research, with an active focus on Active Directory and web pentesting. I started as an intern at Cyberster and Developers Hub and now work as a core team member at Cyberster.</p>
+<div class="pl hb"><span>C|PENT · EC-Council</span><span>Fortinet NSE</span><span>FortiGate 7.4 Operator</span><span>10 certifications</span><span>WebVerse Labs · Red Team rank</span></div>
+<div class="bt"><a class="bn" href="#exp">View experience</a><a class="bn g" href="#certs">Certifications</a></div>
+<p class="hint">Click anywhere to release the bats. Tap ♪ for thunder, the Gotham score and the bat colony.</p>
+</div>
+<div class="cd file" aria-label="Case file">
+<h3><span>CASE FILE</span><span>Pakistan</span></h3>
+<div class="row"><span>role</span><b>Core Team Member</b></div>
+<div class="row"><span>team</span><b>Cyberster</b></div>
+<div class="row"><span>certified</span><b>C|PENT, EC-Council</b></div>
+<div class="row"><span>focus</span><b>Active Directory, web pentest</b></div>
+<div class="row"><span>rank</span><b>Red Team, WebVerse Labs</b></div>
+<div class="row"><span>also</span><b>Red teaming, vuln research</b></div>
+<div class="row"><span>network</span><b>Fortinet NSE, FortiGate 7.4</b></div>
+<div class="row"><span>hardware</span><b>Industrial-level troubleshooting</b></div>
+<div class="row"><span>began as</span><b>Intern, Cyberster + Developers Hub</b></div>
+</div>
+</div></section>
+
+<div class="cr"><div class="w"><span>C|PENT · EC-Council</span><span>Fortinet Network Security Expert</span><span>FortiGate 7.4 Operator</span><span>Cisco Ethical Hacker</span><span>APIsec ACP</span></div></div>
+
+<section id="about"><div class="w">
+<h2 class="rv">The <em>profile</em></h2><p class="sub rv">About</p>
+<div class="ag rv"><div>
+<p>I am a cybersecurity practitioner based in Pakistan with a background in offensive security and red teaming. My focus areas are offensive security, red teaming and vulnerability research, and right now I am actively focused on Active Directory and web application pentesting. I also hold a Red Team rank on WebVerse Labs.</p>
+<p>I began my journey as an intern at Cyberster and at Developers Hub, and I am now a core team member at Cyberster, where I keep working on the offensive side of security.</p>
+<p>On the credentials side I hold EC-Council C|PENT, Fortinet FortiGate 7.4 Operator, Fortinet Network Security Expert, Cisco Ethical Hacker and APIsec University credentials. Alongside the software side I also have a strong grip on industrial-level hardware, including hardware troubleshooting.</p>
+</div><div class="sts">
+<div class="cd st"><b>10</b><small>certifications</small></div>
+<div class="cd st"><b>2</b><small>internships completed</small></div>
+<div class="cd st" style="grid-column:span 2"><b>1</b><small>core team role at Cyberster</small></div>
+</div></div>
+<div class="w3 rv">
+<div class="cd"><h3>Active Directory and web</h3><p>Active focus on Active Directory attacks and web application pentesting, backed by C|PENT.</p></div>
+<div class="cd"><h3>Network security depth</h3><p>Fortinet FortiGate 7.4 Operator and Fortinet Network Security Expert credentials.</p></div>
+<div class="cd"><h3>Hardware and software</h3><p>Comfortable with industrial-level hardware and troubleshooting as well as security tooling.</p></div>
+</div></div></section>
+
+<section id="exp"><div class="w">
+<h2 class="rv">Experience <em>timeline</em></h2><p class="sub rv">Latest first</p>
+<div class="tlv">
+<div class="cd ev rv"><div class="dt">CURRENT · PRESENT</div><h3>Core Team Member</h3><div class="or">Cyberster</div><p>Part of the Cyberster core team after completing the internship there, working in offensive security and red teaming.</p><div class="pl" style="margin-top:12px"><span>Offensive Security</span><span>Red Teaming</span><span>Vulnerability Research</span></div></div>
+<div class="cd ev rv"><div class="dt">PREVIOUS · INTERNSHIP</div><h3>Intern</h3><div class="or">Cyberster</div><p>Started at Cyberster as an intern and moved up to the core team.</p><div class="pl" style="margin-top:12px"><span>Red Teaming</span><span>Offensive Security</span></div></div>
+<div class="cd ev rv"><div class="dt">PREVIOUS · INTERNSHIP</div><h3>Intern</h3><div class="or">Developers Hub</div><p>Internship at Developers Hub.</p></div>
+</div></div></section>
+
+<section id="certs"><div class="w">
+<h2 class="rv">Certifications &amp; <em>training</em></h2><p class="sub rv">10 credentials</p>
+<div class="flt rv" id="flt" role="group" aria-label="Filter certifications"><button type="button" data-f="all" aria-pressed="true">All 10</button><button type="button" data-f="red" aria-pressed="false">Offensive</button><button type="button" data-f="net" aria-pressed="false">Network Security</button><button type="button" data-f="web" aria-pressed="false">API Security</button><button type="button" data-f="base" aria-pressed="false">Foundations</button></div>
+<div class="cg">
+<div class="cd ce f rv" data-c="red"><s>● CERTIFIED · FEATURED</s><h3>Certified Penetration Testing Professional (C|PENT)</h3><small>EC-Council</small><small>Hands-on, practical penetration testing certification.</small></div>
+<div class="cd ce rv" data-c="net"><s>● CERTIFIED</s><h3>FortiGate 7.4 Operator</h3><small>Fortinet</small></div>
+<div class="cd ce rv" data-c="net"><s>● CERTIFIED</s><h3>Network Security Expert</h3><small>Fortinet</small></div>
+<div class="cd ce rv" data-c="red net"><s>● CERTIFIED</s><h3>Ethical Hacker</h3><small>Cisco</small></div>
+<div class="cd ce rv" data-c="web"><s>● CERTIFIED</s><h3>API Security Credentials</h3><small>APIsec University</small></div>
+<div class="cd ce rv" data-c="net"><s>● CERTIFIED</s><h3>Fortinet Certified Associate Cybersecurity</h3><small>Fortinet</small></div>
+<div class="cd ce rv" data-c="net"><s>● CERTIFIED</s><h3>Fortinet NSE 3</h3><small>Fortinet</small></div>
+<div class="cd ce rv" data-c="web"><s>● CERTIFIED</s><h3>APIsec Certified Practitioner (ACP)</h3><small>APIsec University</small></div>
+<div class="cd ce rv" data-c="web"><s>● CERTIFIED</s><h3>APIsec Power User Plus</h3><small>APIsec University</small></div>
+<div class="cd ce rv" data-c="base"><s>● CERTIFIED</s><h3>Certified in Cybersecurity</h3></div>
+</div></div></section>
+
+<section id="skills"><div class="w">
+<h2 class="rv">Skills &amp; <em>focus</em></h2><p class="sub rv">What I work on</p>
+<div class="sg">
+<div class="cd sk rv"><h3>Offensive security</h3><div class="pl"><span>Active Directory Security</span><span>Web Application Pentesting</span><span>Offensive Security</span><span>Red Teaming</span><span>Vulnerability Research</span><span>Penetration Testing</span><span>WebVerse Labs · Red Team</span></div></div>
+<div class="cd sk rv"><h3>Network security</h3><div class="pl"><span>FortiGate 7.4</span><span>Fortinet NSE 3</span><span>Network Security</span></div></div>
+<div class="cd sk rv"><h3>API security</h3><div class="pl"><span>API Security</span><span>APIsec ACP</span><span>APIsec Power User Plus</span></div></div>
+<div class="cd sk rv"><h3>Hardware</h3><div class="pl"><span>Industrial-level Hardware</span><span>Hardware Troubleshooting</span></div></div>
+</div></div></section>
+
+<section id="contact"><div class="w"><div class="cd cn rv">
+<h2>Let's <em>connect</em></h2>
+<p>Open to offensive security, red teaming and vulnerability research conversations. Send me a message.</p>
+<a class="ml" href="mailto:huzaifadal873@gmail.com">huzaifadal873@gmail.com</a>
+<div class="bt"><a class="bn" href="mailto:huzaifadal873@gmail.com">Send email</a><a class="bn g" href="https://www.linkedin.com/in/muhammad-huzaifa-dal-574a1529b/" target="_blank" rel="noopener">LinkedIn</a></div>
+</div></div></section>
+<footer><div class="w"><span>© 2026 Huzaifa Dal</span><span><a href="#hero">Back to top ↑</a> · Pakistan</span></div></footer>
+
+<script>
+(function(){
+var H=document.documentElement,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var cv=document.getElementById('g'),x=cv.getContext('2d'),fl=document.getElementById('fl'),cur=document.getElementById('cur');
+var bf=document.getElementById('bf'),x2=bf.getContext('2d'),fb=[],W,Hh,far,near,sky,rain=[],bats=[],mx=-999,my=-999,vx=0,fi=0,bolt=null,nextL=Date.now()+3500,frame=0,on=false,thunder=function(){};
+function mk(){var o=document.createElement('canvas');o.width=W;o.height=Hh;return o}
+function layer(k,mnH,mxH,mnW,mxW,col,wp){var x0=-20;while(x0<W){var w=mnW+Math.random()*(mxW-mnW),h=Hh*(mnH+Math.random()*(mxH-mnH)),y=Hh-h,r=Math.random();k.fillStyle=col;k.fillRect(x0,y,w,h+2);
+if(r<.28){k.beginPath();k.moveTo(x0+w*.15,y);k.lineTo(x0+w*.5,y-w*1.1-Math.random()*40);k.lineTo(x0+w*.85,y);k.fill()}
+else if(r<.5)k.fillRect(x0+w*.45,y-40-Math.random()*40,3,60);
+else if(r<.65){k.fillRect(x0+w*.2,y-14,w*.6,14);k.fillRect(x0+w*.35,y-26,w*.3,12)}
+for(var wy=y+10;wy<Hh-6;wy+=14)for(var wx=x0+7;wx<x0+w-8;wx+=12)if(Math.random()<wp){k.fillStyle=Math.random()<.8?'rgba(255,200,58,.55)':'rgba(255,240,200,.7)';k.fillRect(wx,wy,4,6)}
+x0+=w+(Math.random()<.4?0:Math.random()*8)}}
+function size(){W=cv.width=bf.width=innerWidth;Hh=cv.height=bf.height=innerHeight;far=mk();near=mk();layer(far.getContext('2d'),.28,.55,40,90,'#111c30',.08);layer(near.getContext('2d'),.14,.36,55,120,'#04060a',.16);
+sky=x.createLinearGradient(0,0,0,Hh);sky.addColorStop(0,'#05080f');sky.addColorStop(1,'#16223a');
+rain=[];for(var i=0;i<Math.floor(W/6);i++)rain.push({x:Math.random()*W,y:Math.random()*Hh,l:10+Math.random()*14,v:12+Math.random()*10});
+bats=[];for(i=0;i<(W<700?4:7);i++)bats.push(newBat())}
+function newBat(){return{x:Math.random()*W,y:30+Math.random()*Hh*.5,vx:-(1+Math.random()*1.4),vy:0,s:.7+Math.random()*.8,ph:Math.random()*6,fs:.18+Math.random()*.1,life:1e9,a:1}}
+function wing(d,f){x.save();x.scale(d,1);x.beginPath();x.moveTo(2,-1);x.quadraticCurveTo(14,-12-f*9,28,-2+f*7);x.quadraticCurveTo(22,2+f*3,19,7+f*3);x.quadraticCurveTo(14,3,10,8);x.quadraticCurveTo(6,3,2,6);x.closePath();x.fill();x.restore()}
+function drawBat(b){var f=Math.sin(frame*b.fs+b.ph);x.save();x.translate(b.x,b.y);x.scale(b.s,b.s);x.fillStyle=b.fg?'rgba(18,22,34,'+b.a+')':'rgba(2,3,6,'+b.a+')';if(b.fg){x.shadowColor='rgba(255,200,58,.8)';x.shadowBlur=12}wing(1,f);wing(-1,f);x.beginPath();x.ellipse(0,0,3.2,6,0,0,6.3);x.fill();x.beginPath();x.moveTo(-3,-4);x.lineTo(-3.5,-10);x.lineTo(0,-6);x.lineTo(3.5,-10);x.lineTo(3,-4);x.fill();x.restore()}
+function strike(){fi=1;var px=Math.random()*W,py=0;bolt=[[px,py]];while(py<Hh*.6){px+=Math.random()*60-30;py+=20+Math.random()*25;bolt.push([px,py])}
+setTimeout(function(){fi=.8},150);if(on)setTimeout(thunder,500+Math.random()*900)}
+function signal(){var sx=W*.78,sy=Hh*.2,r=Hh*.26,g=x.createRadialGradient(sx,sy,4,sx,sy,r);g.addColorStop(0,'rgba(255,236,160,.6)');g.addColorStop(1,'rgba(255,236,160,0)');x.fillStyle=g;x.beginPath();x.arc(sx,sy,r,0,6.3);x.fill();x.save();x.translate(sx,sy);x.scale(2.4,2.4);x.fillStyle='rgba(4,6,10,.85)';wing(1,.2);wing(-1,.2);x.beginPath();x.ellipse(0,0,3.2,6,0,0,6.3);x.fill();x.restore()}
+function draw(){x.clearRect(0,0,W,Hh);x.fillStyle=sky;x.fillRect(0,0,W,Hh);
+if(!rm&&Date.now()>nextL){strike();nextL=Date.now()+5000+Math.random()*8000}
+if(fi>.02){x.fillStyle='rgba(185,205,255,'+fi*.5+')';x.fillRect(0,0,W,Hh);if(bolt&&fi>.15){x.strokeStyle='rgba(235,243,255,'+fi+')';x.lineWidth=2;x.shadowBlur=18;x.shadowColor='#9fc4ff';x.beginPath();bolt.forEach(function(p,i){i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1])});x.stroke();x.shadowBlur=0}fi*=.88}
+fl.style.opacity=fi>.02?fi*.09:0;
+signal();x.drawImage(far,0,0);x.drawImage(near,0,0);
+if(!rm){x.strokeStyle='rgba(170,200,230,.32)';x.lineWidth=1;x.beginPath();rain.forEach(function(r){x.moveTo(r.x,r.y);x.lineTo(r.x-r.l*.12,r.y+r.l);r.y+=r.v;r.x-=1.4;if(r.y>Hh){r.y=-20;r.x=Math.random()*W}});x.stroke();
+bats=bats.filter(function(b){b.x+=b.vx;b.y+=b.vy+Math.sin(frame*.03+b.ph)*.7;var d=Math.hypot(b.x-mx,b.y-my);if(d<120&&d>1){b.x+=(b.x-mx)/d*2.5;b.y+=(b.y-my)/d*2.5}
+if(b.life<1e9){b.life--;b.a=Math.max(0,b.life/60);if(b.life<=0)return false}else{if(b.x<-60){b.x=W+60;b.y=30+Math.random()*Hh*.5}if(b.x>W+60)b.x=-60}drawBat(b);return true})}
+if(mx>-1){x.globalCompositeOperation='lighter';var g=x.createRadialGradient(mx,my,0,mx,my,260);g.addColorStop(0,'rgba(255,214,130,.28)');g.addColorStop(.4,'rgba(255,200,90,.09)');g.addColorStop(1,'rgba(255,200,90,0)');x.fillStyle=g;x.fillRect(mx-260,my-260,520,520);x.globalCompositeOperation='source-over'}
+x2.clearRect(0,0,W,Hh);var xs=x;x=x2;fb=fb.filter(function(b){b.x+=b.vx;b.y+=b.vy+Math.sin(frame*.05+b.ph)*.8;b.vy-=.02;b.life--;b.a=Math.min(1,b.life/50);if(b.life<=0)return false;drawBat(b);return true});x=xs;
+frame++;if(!rm)requestAnimationFrame(draw)}
+size();addEventListener('resize',size);draw();
+addEventListener('pointermove',function(e){vx=e.clientX-mx;mx=e.clientX;my=e.clientY;H.style.setProperty('--mx',mx+'px');H.style.setProperty('--my',my+'px');
+if(e.pointerType==='mouse'&&!rm)H.classList.add('cc');cur.style.transform='translate('+(mx-20)+'px,'+(my-6)+'px) rotate('+Math.max(-25,Math.min(25,vx*1.5))+'deg)';if(rm)draw()});
+document.addEventListener('pointerover',function(e){cur.classList.toggle('big',!!(e.target.closest&&e.target.closest('a,button')))});
+addEventListener('click',function(e){if(rm)return;for(var i=0;i<14&&fb.length<60;i++){var a=-Math.PI/2+(Math.random()-.5)*2.6,sp=3+Math.random()*5;fb.push({x:e.clientX,y:e.clientY,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,s:.9+Math.random()*.9,ph:Math.random()*6,fs:.35,life:110+Math.random()*70,a:1,fg:1})}if(on){flutter();if(Math.random()<.25)strike()}});
+
+/* role typing */
+var ph=['Active Directory Security','Web Application Pentesting','Red Teaming','Vulnerability Research'],pi=0,ci=0,dl=false,r=document.getElementById('role');
+(function ty(){var s=ph[pi];if(rm){r.textContent=ph.slice(0,3).join(' | ');return}r.textContent=s.slice(0,dl?--ci:++ci);var t=dl?30:70;if(!dl&&ci===s.length){dl=true;t=1600}else if(dl&&ci===0){dl=false;pi=(pi+1)%ph.length;t=350}setTimeout(ty,t)})();
+
+/* rain + thunder sound (synthesized) */
+var AC,mg,rainSrc,btn=document.getElementById('snd');
+function ac(){if(!AC){AC=new(window.AudioContext||window.webkitAudioContext)();mg=AC.createGain();mg.gain.value=.8;mg.connect(AC.destination)}if(AC.state==='suspended')AC.resume();return AC}
+function nb(sec,decay){var a=ac(),n=Math.floor(a.sampleRate*sec),b=a.createBuffer(1,n,a.sampleRate),d=b.getChannelData(0);for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*(decay?Math.pow(1-i/n,2):1);return b}
+thunder=function(){var a=ac(),s=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain();s.buffer=nb(3.2,1);f.type='lowpass';f.frequency.setValueAtTime(380,a.currentTime);f.frequency.exponentialRampToValueAtTime(50,a.currentTime+3);g.gain.value=.7;s.connect(f);f.connect(g);g.connect(mg);s.start()};
+function flutter(){var a=ac(),s=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain();s.buffer=nb(.3,1);f.type='bandpass';f.frequency.value=2600;g.gain.value=.12;s.connect(f);f.connect(g);g.connect(mg);s.start()}
+var drone=[],mt;function score(o){if(!o){drone.forEach(function(n){try{n.stop()}catch(e){}});drone=[];clearInterval(mt);return}var a=ac(),lp=a.createBiquadFilter(),g=a.createGain(),lf=a.createOscillator(),lg=a.createGain();lp.type='lowpass';lp.frequency.value=260;g.gain.value=.05;lf.frequency.value=.08;lg.gain.value=120;lf.connect(lg);lg.connect(lp.frequency);lf.start();[36.7,55,73.4,87.3].forEach(function(f,i){var s=a.createOscillator();s.type='sawtooth';s.frequency.value=f;s.detune.value=i*5-6;s.connect(lp);s.start();drone.push(s)});drone.push(lf);lp.connect(g);g.connect(mg);var N=[146.8,174.6,220,174.6,130.8,164.8,196,164.8],k=0;mt=setInterval(function(){var t=a.currentTime,o2=a.createOscillator(),e=a.createGain();o2.type='triangle';o2.frequency.value=N[k++%8];e.gain.setValueAtTime(0,t);e.gain.linearRampToValueAtTime(.08,t+.08);e.gain.exponentialRampToValueAtTime(.001,t+2.4);o2.connect(e);e.connect(mg);o2.start(t);o2.stop(t+2.5)},2200)}
+btn.addEventListener('click',function(){on=!on;btn.setAttribute('aria-pressed',on);btn.textContent=on?'♪ Sound on':'♪ Sound off';
+if(on){var a=ac();rainSrc=a.createBufferSource();rainSrc.buffer=nb(2,0);rainSrc.loop=true;var hp=a.createBiquadFilter(),bp=a.createBiquadFilter(),g=a.createGain();hp.type='highpass';hp.frequency.value=700;bp.type='lowpass';bp.frequency.value=6000;g.gain.value=.09;rainSrc.connect(hp);hp.connect(bp);bp.connect(g);g.connect(mg);rainSrc.start();score(true);setTimeout(thunder,600)}else{if(rainSrc){rainSrc.stop();rainSrc=null}score(false)}});
+
+/* bat colony (synthesized): chirps, screeches, trills, wing flutter */
+var rvb;function room(){var a=ac();if(!rvb){rvb=a.createConvolver();rvb.buffer=nb(1.8,1);var w=a.createGain();w.gain.value=.5;rvb.connect(w);w.connect(mg)}return rvb}
+function rp(v){var a=ac();if(a.createStereoPanner){var p=a.createStereoPanner();p.pan.value=v;p.connect(mg);var w=a.createGain();w.gain.value=.35;p.connect(w);w.connect(room());return p}var w2=a.createGain();w2.gain.value=.35;w2.connect(room());return mg}
+function chirp(delay,v,vol){var a=ac(),T=a.currentTime+delay,d=.04+Math.random()*.09,f0=4200+Math.random()*3800,f1=1700+Math.random()*1300,o=a.createOscillator(),h=a.createOscillator(),g=a.createGain(),g2=a.createGain(),hp=a.createBiquadFilter();
+o.type='sine';h.type='sine';o.frequency.setValueAtTime(f0,T);o.frequency.exponentialRampToValueAtTime(f1,T+d);h.frequency.setValueAtTime(f0*2,T);h.frequency.exponentialRampToValueAtTime(f1*2,T+d);
+hp.type='highpass';hp.frequency.value=1200;g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(vol,T+.006);g.gain.exponentialRampToValueAtTime(.0008,T+d+.02);g2.gain.value=.3;
+o.connect(g);h.connect(g2);g2.connect(g);g.connect(hp);hp.connect(rp(v));o.start(T);h.start(T);o.stop(T+d+.05);h.stop(T+d+.05)}
+function screech(delay,v,vol){var a=ac(),T=a.currentTime+delay,d=.28+Math.random()*.32,o=a.createOscillator(),l=a.createOscillator(),lg=a.createGain(),bp=a.createBiquadFilter(),g=a.createGain(),b=2100+Math.random()*900;
+o.type='sawtooth';o.frequency.setValueAtTime(b,T);o.frequency.linearRampToValueAtTime(b*1.55,T+d*.35);o.frequency.linearRampToValueAtTime(b*1.1,T+d);l.frequency.value=38+Math.random()*30;lg.gain.value=170;l.connect(lg);lg.connect(o.frequency);
+bp.type='bandpass';bp.frequency.value=3300;bp.Q.value=1.4;g.gain.setValueAtTime(0,T);g.gain.linearRampToValueAtTime(vol*.55,T+.03);g.gain.linearRampToValueAtTime(vol*.4,T+d*.7);g.gain.linearRampToValueAtTime(0,T+d);
+o.connect(bp);bp.connect(g);g.connect(rp(v));o.start(T);l.start(T);o.stop(T+d+.05);l.stop(T+d+.05)}
+function trill(delay,v,vol){var n=4+Math.floor(Math.random()*5);for(var i=0;i<n;i++)chirp(delay+i*(.035+Math.random()*.02),v,vol*(1-i*.06))}
+function wings(delay,v){var a=ac(),n=5+Math.floor(Math.random()*5);for(var i=0;i<n;i++){var T=a.currentTime+delay+i*.075,s=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain();s.buffer=nb(.12,1);f.type='bandpass';f.frequency.value=650+Math.random()*350;f.Q.value=.8;g.gain.value=.16;s.connect(f);f.connect(g);g.connect(rp(v));s.start(T)}}
+function batCall(){var v=Math.random()*2-1,r=Math.random();if(r<.55)chirp(0,v,.05+Math.random()*.04);else if(r<.82)trill(0,v,.05);else if(r<.92)screech(0,v,.06);else wings(0,v)}
+function swarm(n){for(var i=0;i<n;i++)setTimeout(function(){if(on)batCall()},Math.random()*1500);setTimeout(function(){if(on)wings(0,Math.random()*2-1)},Math.random()*600)}
+var bt;function batLoop(){clearTimeout(bt);bt=setTimeout(function(){if(!on)return;var k=1+Math.floor(Math.random()*4);for(var i=0;i<k;i++)setTimeout(batCall,i*(60+Math.random()*180));batLoop()},900+Math.random()*2600)}
+btn.addEventListener('click',function(){if(on){setTimeout(function(){swarm(10);batLoop()},1100)}else{clearTimeout(bt)}});
+document.addEventListener('click',function(e){if(on&&!(e.target.closest&&e.target.closest('#snd')))swarm(10)});
+var _th=thunder;thunder=function(){_th();setTimeout(function(){swarm(9)},350)};
+
+var flt=document.getElementById('flt');flt.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(flt.children,function(x){x.setAttribute('aria-pressed',x===b)});var f=b.dataset.f;document.querySelectorAll('.ce').forEach(function(c){c.classList.toggle('hd',f!=='all'&&c.dataset.c.split(' ').indexOf(f)<0)})});
+var lb=document.getElementById('lb');document.querySelectorAll('.zoom').forEach(function(z){z.onclick=function(){var i=z.querySelector('img');lb.firstElementChild.src=i.src;lb.firstElementChild.alt=i.alt;lb.hidden=false}});lb.onclick=function(){lb.hidden=true};addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+var S=document.querySelectorAll('section[id]'),L=document.querySelectorAll('.ln a');
+addEventListener('scroll',function(){document.getElementById('pg').style.width=(scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)*100)+'%';var c='';S.forEach(function(s){if(scrollY>=s.offsetTop-220)c=s.id});L.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+c)})},{passive:true});
+})();
+</script>
+</body>
+</html>
